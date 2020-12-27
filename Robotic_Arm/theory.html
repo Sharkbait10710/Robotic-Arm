@@ -6,21 +6,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0bddf697eb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
-    <title>Robotic Arm</title>
+    <title>Theory</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-<body></body>
+<body>
     <div class="title">
         <h1>Robotic Arm</h1>
+        <div class="burger">
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
     </div>
-    <div class="nav-links">
+    <nav class="nav">
+    <ul class="nav-links">
+        <li>
+            <a href="theory.html">Theory</a>
+        </li>
+        <li>
+            <a href="design.html">Design</a>
+        </li>
+    </ul>
+</nav>
+    <div class="arrow-links">
         <div id="box">
             <ul>
                 <div class="keywords">
-                    <li><a href="#Theory">Theory</a></li>
                     <li><a href="#Important_Components">Important Components</a></li>
-                </div>
+                    <li><a href="#Base-Support">Base Support</a></li>
+                    <li><a href="#Shoulder-and-Elbow">Shoulder-and-Elbow</a></li>
+                    <li><a href="#Claw">Claw</a></li>
+                  </div>
             </ul>
             <div id="arrow"><i class="fas fa-arrow-alt-circle-up fa-4x" style="cursor: pointer;"></i></div>
         </div>
@@ -84,7 +101,7 @@
                 This following section aims to explain why and how the robotic will be designed.
             </p>
             <br><br>
-            <div class = "Base Support">
+            <div id = "Base-Support">
                 <h3 style="text-align: center;" >Base Support</h3>
                 <div class="image"><img src="Images/Theoretical_Base.PNG"></div>
                 <div class="caption"> 
@@ -531,7 +548,7 @@
                 </p>
             </div>
             <br><br>
-            <div class = "Pivot">
+            <div id = "Pivot">
                 <h3 style="text-align: center;">Pivot</h3>
                 <p>
                     The pivot's main task is to provide the robotic arm 360&#176; rotation about the y-axis. The pivot must not 
@@ -548,7 +565,7 @@
                 </div>
             </div>
             <br><br>
-            <div class = "Shoulder-and-Elbow">
+            <div id = "Shoulder-and-Elbow">
                 <h3 style="text-align: center;">Shoulder and Elbow</h3>
                 <p>
                     The shoulder will be attached directly above and centered on the base support. As such, the height of the shoulder above
@@ -567,7 +584,7 @@
                     the origin is placed on the ground directly beneath the base 
                     support.
                 </div>
-                <p>Consider the mimimum reach of the robotic arm given a constant S, h, and d value.</p>
+                <p>Note</p>
                 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
                     <mrow>
                       <msub>
@@ -603,7 +620,7 @@
                     </mrow>
                 </math>
                 <br>
-                <p>Consider the reach of the robotic arm under all specified conditions above, which is </p>
+                <p>The reach of the robotic arm under all specified conditions above, which is </p>
                 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
                     <mrow>
                       <mi>D</mi>
@@ -659,106 +676,24 @@
                     </mrow>
                 </math>
                 <br>
-                <p>The maximum reach can be determined by considering the partial derivative of reach with respect to &#945;</p>
-                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-                    <mrow>
-                      <mfrac>
-                        <mfenced>
-                          <mrow>
-                            <mo>&#x2202;</mo>
-                            <msub>
-                              <mi>D</mi>
-                              <mfenced>
-                                <mrow>
-                                  <mi>r</mi>
-                                  <mi>e</mi>
-                                  <mi>a</mi>
-                                  <mi>c</mi>
-                                  <mi>h</mi>
-                                </mrow>
-                              </mfenced>
-                            </msub>
-                          </mrow>
-                        </mfenced>
-                        <mfenced>
-                          <mrow>
-                            <mo>&#x2202;</mo>
-                            <mi>&#x3b1;</mi>
-                          </mrow>
-                        </mfenced>
-                      </mfrac>
-                      <mo>=</mo>
-                      <mo>&#x2212;</mo>
-                      <mi>S</mi>
-                      <mi>sin</mi>
-                      <mfenced>
-                        <mrow>
-                          <mi>&#x3b1;</mi>
-                          <mo>&#x2212;</mo>
-                          <mn>90</mn>
-                        </mrow>
-                      </mfenced>
-                      <mo>&#x2212;</mo>
-                      <mfrac>
-                        <mfenced>
-                          <mrow>
-                            <mi>S</mi>
-                            <mi>cos</mi>
-                            <mfenced>
-                              <mrow>
-                                <mi>&#x3b1;</mi>
-                                <mo>&#x2212;</mo>
-                                <mn>90</mn>
-                              </mrow>
-                            </mfenced>
-                            <mo>+</mo>
-                            <mi>h</mi>
-                          </mrow>
-                        </mfenced>
-                        <msqrt>
-                          <mfenced>
-                            <mrow>
-                              <msup>
-                                <mi>E</mi>
-                                <mn>2</mn>
-                              </msup>
-                              <mo>&#x2212;</mo>
-                              <msup>
-                                <mfenced>
-                                  <mrow>
-                                    <mi>S</mi>
-                                    <mi>sin</mi>
-                                    <mfenced>
-                                      <mrow>
-                                        <mi>&#x3b1;</mi>
-                                        <mo>&#x2212;</mo>
-                                        <mn>90</mn>
-                                      </mrow>
-                                    </mfenced>
-                                    <mo>+</mo>
-                                    <mi>h</mi>
-                                  </mrow>
-                                </mfenced>
-                                <mn>2</mn>
-                              </msup>
-                            </mrow>
-                          </mfenced>
-                        </msqrt>
-                      </mfrac>
-                    </mrow>
-                </math>
-                <br>
                 <p>
-                    The above two equations must be continuous and only exist within the stated domain of &#945;. Furthermore, 
-                    the radical term cannot be zero. The design should be optimized such that robotic arm will 
-                    have the maximum possible reach. 
+                  Intuitively, D<sub>(reach)</sub> is minimized at &#945; = 180&#176; and D<sub>(reach)</sub> can be further maximized by using greater E. However,
+                  the larger E becomes, the heavier the arm becomes and thus, there must be a compromise between &#945; and E. 
                 </p>
-            </div>
+                </div>
             <br><br>
-            <div class = "Claw">
+            <div id = "Claw">
+              <h3 style="text-align: center;">Claw</h3>
+              <p>
+                The claw has the most freedom out of all important components. Nonetheless, its design is second-to-none.
+              </p>
             </div>
          </div>
+         <br><br>
     </div>
+    <footer>
+      <p>Written by Dang Le</p>
+    </footer>
     <script src="app.js"></script>
 </body>
 </html>
