@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0bddf697eb.js" crossorigin="anonymous"></script>
     <title>Robotic Arm</title>
     <style>
         * {
@@ -28,6 +29,11 @@
         .title {
             margin-top: 3vh;
             text-align: center;
+            display: flex;
+            align-items: center;
+        }
+        .title h1 {
+            flex-grow: 6;
         }
         .sub-titles {
             margin-left: 5vh;
@@ -53,13 +59,69 @@
             text-align: center;
             margin-bottom: 4vh;
         }
+        .nav-links{
+            height: 30vh;
+            color: orange;
+            position: fixed;
+            bottom: 2vh;
+            right: 1vh;
+        }
+        .nav-links i {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        #box {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .nav-links ul {
+            font-size: 30px;
+            display: flex;
+            flex-direction: column-reverse;
+            list-style: none;
+            text-decoration: none;
+            position: relative;
+            bottom: 10vh;
+        }
+        .keywords {
+            display: none;
+        }
+        .nav-links li{
+            border-radius: 25px;
+            margin: 5px;
+            padding: 10px;
+            text-align: center;
+            background-color: orange;
+        }
+        .show {
+            display: block;
+            color: red;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-<body>
+<body></body>
     <div class="title">
         <h1>Robotic Arm</h1>
+    </div>
+    <div class="nav-links">
+        <div id="box">
+            <ul>
+                <div class="keywords">
+                    <li><a href="#Theory">Theory</a></li>
+                    <li><a href="#Important_Components">Important Components</a></li>
+                </div>
+            </ul>
+            <div id="arrow"><i class="fas fa-arrow-alt-circle-up fa-4x" style="cursor: pointer;"></i></div>
+        </div>
     </div>
     <div class="sub-titles">
         <div class="introduction">
@@ -71,7 +133,7 @@
             </p>
         </div>
         <br>
-        <div class="Important_Components">
+        <div id="Important_Components">
             <h2>Important Components</h2>
             <p>
                 An effective robotic arm needs at least a shoulder, elbow, and hand just like a typical human arm.
@@ -114,7 +176,7 @@
             </p>
         </div>
         <br>
-        <div class="theory">
+        <div id="Theory">
             <h2>Theory</h2>
             <p>
                 This following section aims to explain why and how the robotic will be designed.
@@ -595,11 +657,124 @@
                     <b>Figure 3.</b> The shoulder and elbow are connected at a joint. THe shoulder is displaced by a distance h above the ground.
                     The elbow must be longer than the shoulder to reach the ground at distances close to the base support.
                 </div>
+                <p>Consider a simplified diagram of figure 3.</p>
+                <div class="image"><img src="Images/Simplified_Theoretical_Shoulder.PNG"></div>
+                <div class="caption">
+                    <b>Figure 4.</b> the shoulder is displaced h above the ground, smallest radius of the base support is d, the length of the shoulder 
+                    is S, the elbow length is E, the should and E is joined at pt J, the angle between the shoulder and the y-axis &#945; is and 
+                    the origin is placed on the ground directly beneath the base 
+                    support.
+                </div>
+                <p>Consider the mimimum reach of the robotic arm given a constant S, h, and d value.</p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                      <msub>
+                        <mi>D</mi>
+                        <mfenced>
+                          <mrow>
+                            <mi>min</mi>
+                          </mrow>
+                        </mfenced>
+                      </msub>
+                      <mo>=</mo>
+                      <mi>d</mi>
+                    </mrow>
+                </math>
+                <br>
+                <p>Let &#945; be no greater than 180&#176;. As such,</p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                      <mi>arccos</mi>
+                      <mfenced>
+                        <mrow>
+                          <mfrac>
+                            <mi>h</mi>
+                            <mi>S</mi>
+                          </mfrac>
+                        </mrow>
+                      </mfenced>
+                      <mo>&#x2264;</mo>
+                      <mi>&#x3b1;</mi>
+                      <mo>&#x2264;</mo>
+                      <mn>180</mn>
+                      <mo>&#xb0;</mo>
+                    </mrow>
+                </math>
+                <br>
+                <p>Consider the reach of the robotic arm under all specified conditions above, which is </p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                      <mi>D</mi>
+                      <mfenced>
+                        <mrow>
+                          <mi>r</mi>
+                          <mi>e</mi>
+                          <mi>a</mi>
+                          <mi>c</mi>
+                          <mi>h</mi>
+                        </mrow>
+                      </mfenced>
+                      <mo>=</mo>
+                      <mi>S</mi>
+                      <mi>cos</mi>
+                      <mfenced>
+                        <mrow>
+                          <mi>&#x3b1;</mi>
+                          <mo>&#x2212;</mo>
+                          <mn>90</mn>
+                        </mrow>
+                      </mfenced>
+                      <mo>+</mo>
+                      <msqrt>
+                        <mfenced>
+                          <mrow>
+                            <msup>
+                              <mi>E</mi>
+                              <mn>2</mn>
+                            </msup>
+                            <mo>&#x2212;</mo>
+                            <msup>
+                              <mfenced>
+                                <mrow>
+                                  <mi>S</mi>
+                                  <mi>sin</mi>
+                                  <mfenced>
+                                    <mrow>
+                                      <mi>&#x3b1;</mi>
+                                      <mo>&#x2212;</mo>
+                                      <mn>90</mn>
+                                    </mrow>
+                                  </mfenced>
+                                  <mo>+</mo>
+                                  <mi>h</mi>
+                                </mrow>
+                              </mfenced>
+                              <mn>2</mn>
+                            </msup>
+                          </mrow>
+                        </mfenced>
+                      </msqrt>
+                    </mrow>
+                </math>
+                <br>
+                The maximum reach can be determined by taking the the partial of reach with respect to &#945;
             </div>
             <div class = "Claw">
-                
             </div>
          </div>
     </div>
+    <script>
+        const arrowSlide = () => {
+        const arrow = document.getElementById('arrow');
+        const options = document.querySelector('.keywords');
+        
+        arrow.addEventListener('click', () => {
+            options.classList.toggle('show');
+        });
+
+        }
+
+        arrowSlide();
+    </script>
 </body>
 </html>
