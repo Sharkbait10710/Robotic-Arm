@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <title>Robotic Arm</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body::-webkit-scrollbar {
+            width: 30px;               /* width of the entire scrollbar */
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: rgb(207, 204, 201);    /* color of the scroll thumb */
+            border-radius: 20px;       /* roundness of the scroll thumb */
+            height: 20px;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Baloo 2', cursive
+        }
+        .title {
+            margin-top: 3vh;
+            text-align: center;
+        }
+        .sub-titles {
+            margin-left: 5vh;
+            margin-right: 5vh;
+        }
+        .theory {
+            display: flex;
+            flex-direction: column;
+        }
+        .image {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        img {
+            margin-top: 2vh;
+            max-width:100%;
+            max-height:100%;
+        }
+        .caption {
+            text-align: center;
+            margin-bottom: 4vh;
+        }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="title">
+        <h1>Robotic Arm</h1>
+    </div>
+    <div class="sub-titles">
+        <div class="introduction">
+            <h2>Introduction</h2>
+            <p>
+                The aim of this project is to produce a flexible and user-friendly
+                mechanical arm that can reliably pick up any object with a reasonable
+                weight.
+            </p>
+        </div>
+        <br>
+        <div class="Important_Components">
+            <h2>Important Components</h2>
+            <p>
+                An effective robotic arm needs at least a shoulder, elbow, and hand just like a typical human arm.
+                However, to ensure that the robotic arm is flexible, an additional pivot before the shoulder is necessary
+                to give the arm 360&#176; rotational control.
+            </p>
+                <br><br>
+                <h3>Base Support</h3>
+                <p>
+                    As the robotic arm extends itself forward, the amount of torque applied on the arm as a whole
+                    dramatically increases and a greater support force is necessary to counteract that torque. If not,
+                    the robotic arm will surely fall over and cause significant damage to itself.
+                    A simple solution would be to increase the area and weight of the base support. However, there must 
+                    be a balance between the maximum arm length and the base support's area and weight.
+                </p>
+                <br><br>
+                <h3>Pivot</h3>
+                <p>
+                    The pivot allows rotation about the y-axis(pointing towards the sky). 
+                </p>
+                <br><br>
+                <h3>Shoulder</h3>
+                <p>
+                    The shoulder provides rotation about the x-axis (pointing along the arm).
+                </p>
+                <br><br>
+                <h3>Elbow</h3>
+                <p>
+                    The elbow design is essential because it allows the arm to pick up objects
+                    that are within or beyond the reach of the shoulder.
+                </p>
+                <br><br>
+                <h3>Claw</h3>
+                <p>
+                    The claw must be designed such that adequate grip and grip strength is sufficient to pick up a wide range 
+                    of items.
+                    *NOTE: Rubber or rough material are good choices to wrap around the claw fingers.
+                </p>
+                
+            </p>
+        </div>
+        <br>
+        <div class="theory">
+            <h2>Theory</h2>
+            <p>
+                This following section aims to explain why and how the robotic will be designed.
+            </p>
+            <br><br>
+            <div class = "Base Support">
+                <h3 style="text-align: center;" >Base Support</h3>
+                <div class="image"><img src="Images/Theoretical_Base.PNG"></div>
+                <div class="caption"> 
+                    <b>Figure 1.</b> B is the diameter, or the smallest distance between two edge points that 
+                    passes through the center of the base support. S is the shoulder length, E is the elbow length, and 
+                    the pt mass is the claw, which is approximated as a point because its length is 
+                    small compared to the shoulder and elbow.
+                </div>
+                <br>
+                <p>
+                    Let the shoulder be centered on the base support and the origin be located at the center of the base support. 
+                    Consider the COM of B, S, E, and pt mass, which in total makes up the arm's overall COM. 
+                </p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                      <msub>
+                        <mi>x</mi>
+                        <mfenced>
+                          <mrow>
+                            <mi>C</mi>
+                            <mi>O</mi>
+                            <mi>M</mi>
+                          </mrow>
+                        </mfenced>
+                      </msub>
+                      <mo>=</mo>
+                      <mfrac>
+                        <mfenced>
+                          <mrow>
+                            <mo>&#x2211;</mo>
+                            <mi>m</mi>
+                            <mi>x</mi>
+                          </mrow>
+                        </mfenced>
+                        <mfenced>
+                          <mrow>
+                            <mo>&#x2211;</mo>
+                            <mi>m</mi>
+                          </mrow>
+                        </mfenced>
+                      </mfrac>
+                      <mo>=</mo>
+                      <mfrac>
+                        <mfenced>
+                          <mrow>
+                            <msub>
+                              <mi>m</mi>
+                              <mi>S</mi>
+                            </msub>
+                            <msub>
+                              <mi>x</mi>
+                              <mi>S</mi>
+                            </msub>
+                            <mo>+</mo>
+                            <msub>
+                              <mi>m</mi>
+                              <mi>E</mi>
+                            </msub>
+                            <msub>
+                              <mi>x</mi>
+                              <mi>E</mi>
+                            </msub>
+                            <mo>+</mo>
+                            <msub>
+                              <mi>m</mi>
+                              <mfenced>
+                                <mrow>
+                                  <mi>p</mi>
+                                  <mi>t</mi>
+                                </mrow>
+                              </mfenced>
+                            </msub>
+                            <msub>
+                              <mi>x</mi>
+                              <mfenced>
+                                <mrow>
+                                  <mi>p</mi>
+                                  <mi>t</mi>
+                                </mrow>
+                              </mfenced>
+                            </msub>
+                          </mrow>
+                        </mfenced>
+                        <mfenced>
+                          <mrow>
+                            <msub>
+                              <mi>m</mi>
+                              <mi>B</mi>
+                            </msub>
+                            <mo>+</mo>
+                            <msub>
+                              <mi>m</mi>
+                              <mi>S</mi>
+                            </msub>
+                            <mo>+</mo>
+                            <msub>
+                              <mi>m</mi>
+                              <mi>E</mi>
+                            </msub>
+                            <mo>+</mo>
+                            <msub>
+                              <mi>m</mi>
+                              <mfenced>
+                                <mrow>
+                                  <mi>p</mi>
+                                  <mi>t</mi>
+                                </mrow>
+                              </mfenced>
+                            </msub>
+                          </mrow>
+                        </mfenced>
+                      </mfrac>
+                    </mrow>
+                </math>
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                    <mo>&#x2211;</mo>
+                    <msub>
+                        <mi>&#x3c4;</mi>
+                        <mfenced>
+                        <mrow>
+                            <mi>C</mi>
+                            <mi>O</mi>
+                            <mi>M</mi>
+                            <mi>z</mi>
+                        </mrow>
+                        </mfenced>
+                    </msub>
+                    <mo>=</mo>
+                    <mo>&#x2212;</mo>
+                    <msub>
+                        <mi>F</mi>
+                        <mi>B</mi>
+                    </msub>
+                    <mfenced>
+                        <mrow>
+                        <msub>
+                            <mi>x</mi>
+                            <mfenced>
+                            <mrow>
+                                <mi>C</mi>
+                                <mi>O</mi>
+                                <mi>M</mi>
+                            </mrow>
+                            </mfenced>
+                        </msub>
+                        </mrow>
+                    </mfenced>
+                    <mo>+</mo>
+                    <msub>
+                        <mi>m</mi>
+                        <mi>S</mi>
+                    </msub>
+                    <mi>g</mi>
+                    <mfenced>
+                        <mrow>
+                        <msub>
+                            <mi>x</mi>
+                            <mi>S</mi>
+                        </msub>
+                        <mo>&#x2212;</mo>
+                        <msub>
+                            <mi>x</mi>
+                            <mfenced>
+                            <mrow>
+                                <mi>C</mi>
+                                <mi>O</mi>
+                                <mi>M</mi>
+                            </mrow>
+                            </mfenced>
+                        </msub>
+                        </mrow>
+                    </mfenced>
+                    <mo>+</mo>
+                    <msub>
+                        <mi>m</mi>
+                        <mi>E</mi>
+                    </msub>
+                    <mi>g</mi>
+                    <mfenced>
+                        <mrow>
+                        <msub>
+                            <mi>x</mi>
+                            <mi>E</mi>
+                        </msub>
+                        <mo>&#x2212;</mo>
+                        <msub>
+                            <mi>x</mi>
+                            <mfenced>
+                            <mrow>
+                                <mi>C</mi>
+                                <mi>O</mi>
+                                <mi>M</mi>
+                            </mrow>
+                            </mfenced>
+                        </msub>
+                        </mrow>
+                    </mfenced>
+                    <mo>+</mo>
+                    <msub>
+                        <mi>m</mi>
+                        <mfenced>
+                        <mrow>
+                            <mi>p</mi>
+                            <mi>t</mi>
+                        </mrow>
+                        </mfenced>
+                    </msub>
+                    <mi>g</mi>
+                    <mfenced>
+                        <mrow>
+                        <msub>
+                            <mi>x</mi>
+                            <mfenced>
+                            <mrow>
+                                <mi>p</mi>
+                                <mi>t</mi>
+                            </mrow>
+                            </mfenced>
+                        </msub>
+                        <mo>&#x2212;</mo>
+                        <msub>
+                            <mi>x</mi>
+                            <mfenced>
+                            <mrow>
+                                <mi>C</mi>
+                                <mi>O</mi>
+                                <mi>M</mi>
+                            </mrow>
+                            </mfenced>
+                        </msub>
+                        </mrow>
+                    </mfenced>
+                    </mrow>
+                </math>
+                <br>
+                <div class="caption">y<sub>(COM)</sub> was omitted because gravitational force points only along the y-axis.
+                    F<sub>B</sub> points downwards.
+                </div>     
+                <p>Applying equilibrium on the torque equation and solving for F<sub>B</sub> yields</p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                    <msub>
+                        <mi>F</mi>
+                        <mi>B</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mfenced>
+                        <mrow>
+                            <msub>
+                            <mi>m</mi>
+                            <mi>S</mi>
+                            </msub>
+                            <mi>g</mi>
+                            <mfenced>
+                            <mrow>
+                                <msub>
+                                <mi>x</mi>
+                                <mi>S</mi>
+                                </msub>
+                                <mo>&#x2212;</mo>
+                                <msub>
+                                <mi>x</mi>
+                                <mfenced>
+                                    <mrow>
+                                    <mi>C</mi>
+                                    <mi>O</mi>
+                                    <mi>M</mi>
+                                    </mrow>
+                                </mfenced>
+                                </msub>
+                            </mrow>
+                            </mfenced>
+                            <mo>+</mo>
+                            <msub>
+                            <mi>m</mi>
+                            <mi>E</mi>
+                            </msub>
+                            <mi>g</mi>
+                            <mfenced>
+                            <mrow>
+                                <msub>
+                                <mi>x</mi>
+                                <mi>E</mi>
+                                </msub>
+                                <mo>&#x2212;</mo>
+                                <msub>
+                                <mi>x</mi>
+                                <mfenced>
+                                    <mrow>
+                                    <mi>C</mi>
+                                    <mi>O</mi>
+                                    <mi>M</mi>
+                                    </mrow>
+                                </mfenced>
+                                </msub>
+                            </mrow>
+                            </mfenced>
+                            <mo>+</mo>
+                            <msub>
+                            <mi>m</mi>
+                            <mfenced>
+                                <mrow>
+                                <mi>p</mi>
+                                <mi>t</mi>
+                                </mrow>
+                            </mfenced>
+                            </msub>
+                            <mi>g</mi>
+                            <mfenced>
+                            <mrow>
+                                <msub>
+                                <mi>x</mi>
+                                <mfenced>
+                                    <mrow>
+                                    <mi>p</mi>
+                                    <mi>t</mi>
+                                    </mrow>
+                                </mfenced>
+                                </msub>
+                                <mo>&#x2212;</mo>
+                                <msub>
+                                <mi>x</mi>
+                                <mfenced>
+                                    <mrow>
+                                    <mi>C</mi>
+                                    <mi>O</mi>
+                                    <mi>M</mi>
+                                    </mrow>
+                                </mfenced>
+                                </msub>
+                            </mrow>
+                            </mfenced>
+                        </mrow>
+                        </mfenced>
+                        <msub>
+                        <mi>x</mi>
+                        <mfenced>
+                            <mrow>
+                            <mi>C</mi>
+                            <mi>O</mi>
+                            <mi>M</mi>
+                            </mrow>
+                        </mfenced>
+                        </msub>
+                    </mfrac>
+                    </mrow>
+                </math> 
+                <p>Simplifying the above equation yields</p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                    <msub>
+                        <mi>F</mi>
+                        <mi>B</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>g</mi>
+                    <mfenced>
+                        <mrow>
+                        <mfrac>
+                            <mfenced>
+                            <mrow>
+                                <msub>
+                                <mi>m</mi>
+                                <mi>S</mi>
+                                </msub>
+                                <msub>
+                                <mi>x</mi>
+                                <mi>S</mi>
+                                </msub>
+                                <mo>+</mo>
+                                <msub>
+                                <mi>m</mi>
+                                <mi>E</mi>
+                                </msub>
+                                <msub>
+                                <mi>x</mi>
+                                <mi>E</mi>
+                                </msub>
+                                <mo>+</mo>
+                                <msub>
+                                <mi>m</mi>
+                                <mfenced>
+                                    <mrow>
+                                    <mi>p</mi>
+                                    <mi>t</mi>
+                                    </mrow>
+                                </mfenced>
+                                </msub>
+                                <msub>
+                                <mi>x</mi>
+                                <mfenced>
+                                    <mrow>
+                                    <mi>p</mi>
+                                    <mi>t</mi>
+                                    </mrow>
+                                </mfenced>
+                                </msub>
+                            </mrow>
+                            </mfenced>
+                            <msub>
+                            <mi>x</mi>
+                            <mfenced>
+                                <mrow>
+                                <mi>C</mi>
+                                <mi>O</mi>
+                                <mi>M</mi>
+                                </mrow>
+                            </mfenced>
+                            </msub>
+                        </mfrac>
+                        <mo>&#x2212;</mo>
+                        <mfenced>
+                            <mrow>
+                            <msub>
+                                <mi>m</mi>
+                                <mi>S</mi>
+                            </msub>
+                            <mo>+</mo>
+                            <msub>
+                                <mi>m</mi>
+                                <mi>E</mi>
+                            </msub>
+                            <mo>+</mo>
+                            <msub>
+                                <mi>m</mi>
+                                <mfenced>
+                                <mrow>
+                                    <mi>p</mi>
+                                    <mi>t</mi>
+                                </mrow>
+                                </mfenced>
+                            </msub>
+                            </mrow>
+                        </mfenced>
+                        </mrow>
+                    </mfenced>
+                    </mrow>
+                </math>
+                <p>The above equation is important because it reveals the required force to prevent the mechanical arm from
+                    falling over. More importantly, F<sub>B</sub> reduces to the weight of the base support, 
+                    which is constant.
+                </p>
+            </div>
+            <br><br>
+            <div class = "Pivot">
+                <h3 style="text-align: center;">Pivot</h3>
+                <p>
+                    The pivot's main task is to provide the robotic arm 360&#176; rotation about the y-axis. The pivot must not 
+                    be too large that carrying the robotic arm around is cumbersome but not too small that the amount of force required 
+                    to rotate the robotic arm is unattainable for a NEMA-17 stepper motor.
+                </p>
+                <br><br>
+                <p>
+                    The following pivot design attempts to resolve the above requirements.
+                </p>
+                <div class="image"><img src="Images/Theoretical_Pivot.PNG"></div>
+                <div class="caption">
+                    <b>Figure 2.</b> The pivot is powered by a stepper motor and bevel gears are necessary to switch axes of rotation.
+                </div>
+            </div>
+            <br><br>
+            <div class = "Shoulder-and-Elbow">
+                <h3 style="text-align: center;">Shoulder and Elbow</h3>
+                <p>
+                    The shoulder will be attached directly above and centered on the base support. As such, the height of the shoulder above
+                    the ground must be taken into account when designing the elbow.
+                </p>
+                <div class="image"><img src="Images/Theoretical_Shoulder.PNG"></div>
+                <div class="caption">
+                    <b>Figure 3.</b> The shoulder and elbow are connected at a joint. THe shoulder is displaced by a distance h above the ground.
+                    The elbow must be longer than the shoulder to reach the ground at distances close to the base support.
+                </div>
+            </div>
+            <div class = "Claw">
+                
+            </div>
+         </div>
+    </div>
+</body>
+</html>
