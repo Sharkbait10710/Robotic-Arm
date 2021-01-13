@@ -1,0 +1,24 @@
+﻿
+Pro/ENGINEER INTERFACE EXPORT LOG FILE
+
+STEP output for Assembly FULL_ASSEMBLY.
+
+
+
+Option values used for this export.
+
+step_export_format                           AP203_IS
+export_3d_force_default_naming               NO
+intf3d_out_extend_surface                    YES
+intf3d_out_surface_deviation                 DEFAULT
+intf_out_as_bezier                           NO
+intf3d_out_force_surf_normals                NO
+intf_out_max_bspl_degree                     16
+
+
+Process began at: Wed Jan 13 15:56:36 2021
+
+Process finished at: Wed Jan 13 15:56:43 2021
+
+Total process time: 00:00:07.
+
